@@ -15,7 +15,7 @@ class TextArea extends React.Component {
           <h1>To be distributed {this.state.items}</h1>
           <p>Enter the items here:</p>
             <textarea onChange={this.changeHandler}>
-            25kg geladeira x2
+            25kg geladeira x23
             </textarea>
           </form>
         );
