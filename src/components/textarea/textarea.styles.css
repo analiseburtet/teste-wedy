@@ -1,0 +1,48 @@
+textarea {
+    resize: none;
+    width: -webkit-fill-available;
+    display: flex;
+    height: 200px;
+    border-radius: 20px;
+    outline: none!important;
+    padding: 20px;
+    font-family: inherit;
+}
+
+.align-center {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 70px;
+}
+
+.main {
+    padding: 20px;
+}
+
+form {
+    width: 100%;
+    overflow: hidden;
+}
+
+h1 {
+    color: #7e5ecb;
+    font-size: 18px;
+}
+
+p {
+    color: #212121;
+}
+
+button.btn {
+    background-color: #7e5ecb;
+    color: #ffffff;
+    cursor: pointer;
+    letter-spacing: 1px;
+    padding: 13px 27px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+}
