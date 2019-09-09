@@ -27,17 +27,23 @@ class TextArea extends React.Component {
         for (let i in array){
           let newArray = array[i].match(/^([0-9]+)kg +([^ ]+) *(?:x([0-9]+))?$/);
           if(typeof newArray[3] === "undefined"){newArray[3] = 1}
-          totalWeight.push(newArray[1] * newArray[3]);
+          let weight = newArray[1];
+          let qty = newArray[3];
+          let productName = newArray[2];
+          let item = [weight, qty, productName];
+          totalWeight.push(item);
+      }
+      totalWeight.sort(function (a, b) {
+      if (a[0] > b[0]) {
+          return 1;
         }
-        let total = 0;
-        for (let i = 0; i < totalWeight.length; i++) {
-          total += parseFloat(totalWeight[i])
+        if (a[0] < b[1]) {
+          return -1;
         }
-        let toBeDistributed = totalWeight.sort();
-        for (let i in toBeDistributed){
-          //do something
-        }
-        console.log(total);
+        return 0;
+      });
+      console.log(totalWeight);
+        
        };
       render(){
         return( 
