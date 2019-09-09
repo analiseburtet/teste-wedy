@@ -7,8 +7,11 @@ class TextArea extends React.Component {
     constructor(props) {
         super(props);
         this.state = { 
-          items: ''
+          items: []
       }
+    }
+    changeHandler = (event) => {
+      this.setState({items: event.target.value});
     }
       onSubmit = (event) => {
         event.preventDefault();
@@ -17,7 +20,24 @@ class TextArea extends React.Component {
           items: data
         });
         const array = data.split("\n");
-        console.log(array);
+        let totalWeight = [];
+        const moto = 35;
+        const van = 4500;
+        const truck = 16000;
+        for (let i in array){
+          let newArray = array[i].match(/^([0-9]+)kg +([^ ]+) *(?:x([0-9]+))?$/);
+          if(typeof newArray[3] === "undefined"){newArray[3] = 1}
+          totalWeight.push(newArray[1] * newArray[3]);
+        }
+        let total = 0;
+        for (let i = 0; i < totalWeight.length; i++) {
+          total += parseFloat(totalWeight[i])
+        }
+        let toBeDistributed = totalWeight.sort();
+        for (let i in toBeDistributed){
+          
+        }
+        console.log(total);
        };
       render(){
         return( 
