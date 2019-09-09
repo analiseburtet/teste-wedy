@@ -1,4 +1,4 @@
-This is my test resolution for Wedy's opportunity.
+This is my test resolution for Wedy's opportunity. [not ready yet]
 
 To run this project you should:
 
