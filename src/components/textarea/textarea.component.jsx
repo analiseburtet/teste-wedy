@@ -35,7 +35,7 @@ class TextArea extends React.Component {
         }
         let toBeDistributed = totalWeight.sort();
         for (let i in toBeDistributed){
-          
+          //do something
         }
         console.log(total);
        };
