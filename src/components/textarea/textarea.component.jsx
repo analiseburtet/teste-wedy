@@ -22,9 +22,19 @@ class TextArea extends React.Component {
         });
         const array = data.split("\n");
         let totalWeight = [];
-        const moto = 35;
-        const van = 4500;
-        const truck = 16000;
+        const moto = {
+          availableStorage: 35, 
+          itens: []
+        };
+        const van = {
+          availableStorage: 4500, 
+          itens: []
+        };
+        const truck = {
+          availableStorage: 16000, 
+          itens: []
+        };
+
         for (let i in array){
           let newArray = array[i].match(/^([0-9]+)kg +([^ ]+) *(?:x([0-9]+))?$/);
           if(typeof newArray[3] === "undefined"){newArray[3] = 1}
@@ -43,16 +53,15 @@ class TextArea extends React.Component {
         }
         return 0;
       });
-      // colocar itens nos respectivos veiculos
       totalWeight.forEach(item => {
-          if(item[0] <= moto){
-            console.log("goes in the moto")
-          }else if(item[0] > moto && item[0] <= van){
-            console.log("goes in the van")
-          }else if(item[0] > truck){
-            console.log('weight limit exced')
+          if(item[0] <= moto.availableStorage){
+            let result = moto.availableStorage - item[0];
+          }else if(item[0] > moto.availableStorage && item[0] <= van.availableStorage){
+            let result = van.availableStorage - item[0];
+          }else if(item[0] > truck.availableStorage){
+            alert('weight limit exced', item);
           }else{
-            console.log('goes in the caminhao');
+            let result = truck.availableStorage - item[0];
           }
       });
   };
