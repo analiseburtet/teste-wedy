@@ -12,6 +12,7 @@ class TextArea extends React.Component {
     }
     changeHandler = (event) => {
       this.setState({items: event.target.value});
+      document.querySelector('.btn').style.display = "flex";
     }
       onSubmit = (event) => {
         event.preventDefault();
@@ -42,9 +43,19 @@ class TextArea extends React.Component {
         }
         return 0;
       });
-      console.log(totalWeight);
-        
-       };
+      // colocar itens nos respectivos veiculos
+      totalWeight.forEach(item => {
+          if(item[0] <= moto){
+            console.log("goes in the moto")
+          }else if(item[0] > moto && item[0] <= van){
+            console.log("goes in the van")
+          }else if(item[0] > truck){
+            console.log('weight limit exced')
+          }else{
+            console.log('goes in the caminhao');
+          }
+      });
+  };
       render(){
         return( 
             <div className="main">
@@ -52,11 +63,14 @@ class TextArea extends React.Component {
               <h1>Calculate how many vehicles you will use to delivery your list items.</h1>
               <p>Type your list below following the example.</p>
               <p>Example: 25kg furniture x2</p>
-                <textarea  
+                <textarea 
+                className='textarea' 
                 onChange={this.changeHandler}>
                 </textarea>
                 <div className="align-center">
-                  <button 
+                  <button style = {{
+                    display: 'none'
+                  }}
                       type="submit" 
                       className="btn">Click me to distribute the items!
                   </button>
