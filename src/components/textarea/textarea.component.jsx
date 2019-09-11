@@ -37,7 +37,7 @@ class TextArea extends React.Component {
 
         for (let i in array){
           let newArray = array[i].match(/^([0-9]+)kg +([^ ]+) *(?:x([0-9]+))?$/);
-          if(typeof newArray[3] === "undefined"){newArray[3] = 1}
+          if(typeof newArray[3] === "undefined" || newArray[3] === " "){newArray[3] = 1}
           let weight = newArray[1];
           let qty = newArray[3];
           let productName = newArray[2];
@@ -56,12 +56,15 @@ class TextArea extends React.Component {
       totalWeight.forEach(item => {
           if(item[0] <= moto.availableStorage){
             let result = moto.availableStorage - item[0];
+            moto.itens.push(item);
           }else if(item[0] > moto.availableStorage && item[0] <= van.availableStorage){
             let result = van.availableStorage - item[0];
+            van.itens.push(item);
           }else if(item[0] > truck.availableStorage){
             alert('weight limit exced', item);
           }else{
             let result = truck.availableStorage - item[0];
+            truck.itens.push(item);
           }
       });
   };
@@ -86,8 +89,8 @@ class TextArea extends React.Component {
                 </div>
               </form>
               <div className="distributed">
-              <LocalShippingIcon></LocalShippingIcon> 
-              <MotorcycleIcon></MotorcycleIcon> 
+              <LocalShippingIcon></LocalShippingIcon> {this.truck}
+              <MotorcycleIcon></MotorcycleIcon>  {this.moto}
               {this.state.items}
               </div>
             </div>
